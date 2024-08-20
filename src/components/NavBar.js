@@ -5,7 +5,7 @@ const NavBar = () => {
     <div>
       <Navbar variant='dark'>
         <Container>
-            <Navbar.Brand>Panpan Films</Navbar.Brand>
+            <Navbar.Brand href="/">Panpan Films</Navbar.Brand>
           <Nav>
             <Nav.Link href="#trending">Trending</Nav.Link>
             <Nav.Link href="#superhero">Superhero</Nav.Link>
