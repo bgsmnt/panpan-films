@@ -1,11 +1,5 @@
 import { useState, useEffect } from "react";
-import { Card, Container, Row, Col, Image } from "react-bootstrap";
-import deadpoolImage from "../assets/images/trending/deadpool.jpg";
-import interstellar_water from "../assets/images/trending/interstellar_water.jpg";
-import ipar from "../assets/images/trending/Ipar Adalah Maut.png";
-import jatuh from "../assets/images/trending/jatuh.jpg";
-import joker from "../assets/images/trending/joker.jpg";
-import wed from "../assets/images/trending/wed.jpg";
+import { Card, Container, Row, Col, Image, Overlay } from "react-bootstrap";
 import axios from "axios";
 
 const Trending = () => {
@@ -16,7 +10,7 @@ const Trending = () => {
         api_key: process.env.REACT_APP_TMDB_KEY
       }
     }).then((response) => {
-      setMovies(response.data.results)
+      setMovies(response.data.results.slice(0, 6))
     })
   }, [])
 
@@ -28,15 +22,12 @@ const Trending = () => {
       <Row>
         {movies.map((result, index) => {
           return (
-            <Col md={4} className="movieWrapper" id="trending" key={index}>
+            <Col md={4} className="movieWrapper" id="action" key={index}>
             <Card className="movieImage">
               <Image src={`${process.env.REACT_APP_IMAGE_BASE_URL}/${result.poster_path}`} alt="test" className="images"/>
               <div className="bg-dark">
                 <div className="p-2 m-1 text-white">
                   <Card.Title className="text-center">{result.title}</Card.Title>
-                  <Card.Text className="text-left">
-                    {result.overview}
-                  </Card.Text>
                   <Card.Text className="text-left">
                     {result.release_date}
                   </Card.Text>
